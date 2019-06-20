@@ -20,7 +20,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Routes and Models
 require("./controllers/api.js")(app);
+require("./models/user.js")(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
