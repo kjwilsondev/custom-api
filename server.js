@@ -5,6 +5,10 @@ const passport = require("./config/passport");
 const session = require("express-session");
 const app = express();
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/');
+require('./models/User');
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -22,6 +26,7 @@ app.use(passport.session());
 
 // Routes and Models
 require("./controllers/api.js")(app);
+require("./config/passport");
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
